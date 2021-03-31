@@ -41,7 +41,7 @@ namespace HZH_Controls.Controls
         {
             SetStyles();
             //this.Multiline = true;
-            this.ItemSize = new Size(this.ItemSize.Width, 50);
+            this.ItemSize = new Size(this.ItemSize.Width, 35);
         }
         /// <summary>
         /// Sets the styles.
@@ -99,7 +99,7 @@ namespace HZH_Controls.Controls
         /// <summary>
         /// The border color
         /// </summary>
-        private Color _borderColor = Color.FromArgb(232, 232, 232);
+        private Color _borderColor = Color.FromArgb(255, 255, 255);
         /// <summary>
         /// Gets or sets the color of the border.
         /// </summary>
@@ -119,7 +119,7 @@ namespace HZH_Controls.Controls
         /// <summary>
         /// The head selected back color
         /// </summary>
-        private Color _headSelectedBackColor = Color.FromArgb(255, 85, 51);
+        private Color _headSelectedBackColor = Color.SkyBlue;
         /// <summary>
         /// Gets or sets the color of the head selected back.
         /// </summary>
@@ -131,11 +131,26 @@ namespace HZH_Controls.Controls
             get { return _headSelectedBackColor; }
             set { _headSelectedBackColor = value; }
         }
+        /// <summary>
+        /// The head selected back color
+        /// </summary>
+        private Color _headSelectedFontColor = Color.AliceBlue;
+        /// <summary>
+        /// Gets or sets the color of the head selected back.
+        /// </summary>
+        /// <value>The color of the head selected back.</value>
+        [DefaultValue(typeof(Color), "255, 85, 51")]
+        [Description("TabPage头部选中后的字体颜色")]
+        public Color HeadSelectedFontColor
+        {
+            get { return _headSelectedFontColor; }
+            set { _headSelectedFontColor = value; }
+        }
 
         /// <summary>
         /// The head selected border color
         /// </summary>
-        private Color _headSelectedBorderColor = Color.FromArgb(232, 232, 232);
+        private Color _headSelectedBorderColor = Color.LightBlue;
         /// <summary>
         /// Gets or sets the color of the head selected border.
         /// </summary>
@@ -290,13 +305,26 @@ namespace HZH_Controls.Controls
             Rectangle rect = this.GetTabRect(index);
             if (rect.Width == 0 || rect.Height == 0) return;
             System.Drawing.Brush buttonBrush = new System.Drawing.Drawing2D.LinearGradientBrush(rect, _headerBackColor, _headerBackColor, LinearGradientMode.Vertical);  //非选中时候的 TabPage 页头部背景色
-            graph.FillPath(buttonBrush, path);
+            //graph.FillPath(buttonBrush, path);
             //if (index == this.SelectedIndex)
             //{
-            //    //buttonBrush = new System.Drawing.SolidBrush(_headSelectedBackColor);
-            //    graph.DrawLine(new Pen(_headerBackColor), rect.Right+2, rect.Bottom, rect.Left + 1, rect.Bottom);
+            //    buttonBrush = new System.Drawing.SolidBrush(_headSelectedBackColor);
+            //    graph.DrawLine(new Pen(_headerBackColor), rect.Right + 2, rect.Bottom, rect.Left + 1, rect.Bottom);
             //}
             buttonBrush.Dispose();
+            if (index == this.SelectedIndex)
+            {
+                using (SolidBrush brush = new SolidBrush(_headSelectedBackColor))
+                {
+                    // rect.Inflate(1, 1);
+                    //graph.FillRectangle(brush, rect);
+                    graph.FillPath(brush, path);
+                }
+            }
+            else
+            {
+
+            }
         }
 
         /// <summary>
@@ -369,7 +397,7 @@ namespace HZH_Controls.Controls
             {
                 if (this.TabPages[index].Enabled != false)
                 {
-                    forebrush = new SolidBrush(_headSelectedBackColor);
+                    forebrush = new SolidBrush(_headSelectedFontColor);
                 }
             }
 
@@ -402,13 +430,13 @@ namespace HZH_Controls.Controls
         /// <param name="e">The <see cref="System.Windows.Forms.PaintEventArgs" /> instance containing the event data.</param>
         private void PaintTheSelectedTab(System.Windows.Forms.PaintEventArgs e)
         {
-            if (this.SelectedIndex == -1)
-                return;
-            Rectangle selrect;
-            int selrectRight = 0;
-            selrect = this.GetTabRect(this.SelectedIndex);
-            selrectRight = selrect.Right;
-            e.Graphics.DrawLine(new Pen(_headSelectedBackColor), selrect.Left, selrect.Bottom + 1, selrectRight, selrect.Bottom + 1);
+            //if (this.SelectedIndex == -1)
+            //    return;
+            //Rectangle selrect;
+            //int selrectRight = 0;
+            //selrect = this.GetTabRect(this.SelectedIndex);
+            //selrectRight = selrect.Right;
+            //e.Graphics.DrawLine(new Pen(_headSelectedBackColor), selrect.Left, selrect.Bottom + 1, selrectRight, selrect.Bottom + 1);
         }
 
         /// <summary>
@@ -420,7 +448,6 @@ namespace HZH_Controls.Controls
         {
             System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
             path.Reset();
-
             Rectangle rect = this.GetTabRect(index);
 
             switch (Alignment)
@@ -438,12 +465,35 @@ namespace HZH_Controls.Controls
 
                     break;
             }
+            Point P_LeftTop = new Point(rect.Left + 15, rect.Top);
+            Point P_LeftBottom = new Point(rect.Left + 2, rect.Bottom);
+            Point P_RightTop = new Point(rect.Right - 15, rect.Top);
+            Point P_RightBottom = new Point(rect.Right - 2, rect.Bottom);
 
-            path.AddLine(rect.Left, rect.Top, rect.Left, rect.Bottom + 1);
-            path.AddLine(rect.Left, rect.Top, rect.Right, rect.Top);
-            path.AddLine(rect.Right, rect.Top, rect.Right, rect.Bottom + 1);
-            path.AddLine(rect.Right, rect.Bottom + 1, rect.Left, rect.Bottom + 1);
+            Point P_Control1 = new Point(rect.Left+5, rect.Top-5);
+            Point P_Control2 = new Point(rect.Left + 5, rect.Bottom - rect.Height / 5 * 3);
 
+            Point P_Control3 = new Point(rect.Right-5, rect.Top-5);
+            Point P_Control4 = new Point(rect.Right-5, rect.Bottom - rect.Height / 5 * 3);
+            //path.AddLine(rect.Left + 15, rect.Top, rect.Left + 2, rect.Bottom + 1);
+            //path.AddLine(rect.Left + 15, rect.Top, rect.Right - 15, rect.Top);
+            //path.AddLine(rect.Right - 15, rect.Top, rect.Right - 2, rect.Bottom + 1);
+            //path.AddLine(rect.Right - 2, rect.Bottom, rect.Left + 2, rect.Bottom);
+            path.AddBezier(P_LeftTop, P_Control1, P_Control2, P_LeftBottom);
+            path.AddLine(P_LeftBottom, P_RightBottom);
+            path.AddBezier(P_RightBottom, P_Control4, P_Control3, P_RightTop);
+            path.AddLine(P_RightTop,P_LeftTop);
+
+
+
+
+
+            //int diameter = 2 * 10;
+
+            //path.AddArc(new Rectangle(new Point(rect.Left + 5, rect.Top), new Size(diameter, diameter)), 180, 60);
+            //path.AddArc(new Rectangle(new Point(rect.Right - 15 - diameter, rect.Top - diameter), new Size(diameter, diameter)), 0, 60);
+            //path.CloseFigure();
+            //return GetRoundedRectPath(rect, 15);
             return path;
         }
 
@@ -495,7 +545,7 @@ namespace HZH_Controls.Controls
         /// <param name="m">一个 Windows 消息对象。</param>
         protected override void WndProc(ref Message m)
         {
-			 base.WndProc(ref m);
+            base.WndProc(ref m);
             if (m.Msg == 0x0201) // WM_LBUTTONDOWN
             {
                 if (!DesignMode)
@@ -523,7 +573,7 @@ namespace HZH_Controls.Controls
                 }
             }
 
-           
+
         }
         /// <summary>
         /// 在调度键盘或输入消息之前，在消息循环内对它们进行预处理。
@@ -559,5 +609,36 @@ namespace HZH_Controls.Controls
             }
             return -1;
         }
+
+        #region NewMethod
+        GraphicsPath GetRoundedRectPath(Rectangle rect, int radius)
+        {
+            int diameter = 2 * radius;
+            Rectangle arcRect = new Rectangle(rect.Location, new Size(diameter, diameter));
+            GraphicsPath path = new GraphicsPath();
+
+            // 左上角
+            path.AddArc(arcRect, 180, 90);
+
+            var a = new Rectangle(rect.Location, new Size(diameter, diameter));
+            // 右上角
+            arcRect.X = a.Right - 15 - diameter;
+            path.AddArc(arcRect, 270, 90);
+
+            //// 右下角
+            //arcRect.Y = rect.Bottom - diameter;
+            //path.AddArc(arcRect, 0, 90);
+
+            //// 左下角
+            //arcRect.X = rect.Left;
+            //path.AddArc(arcRect, 90, 90);
+
+            path.AddLine(arcRect.Right - 2, arcRect.Bottom, arcRect.Left + 2, arcRect.Bottom);
+
+            path.CloseFigure();
+
+            return path;
+        }
+        #endregion
     }
 }

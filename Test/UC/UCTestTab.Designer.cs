@@ -44,6 +44,8 @@
             // 
             // tabControlExt1
             // 
+            this.tabControlExt1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.tabControlExt1.CloseBtnColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(85)))), ((int)(((byte)(51)))));
             this.tabControlExt1.Controls.Add(this.tabPage1);
             this.tabControlExt1.Controls.Add(this.tabPage2);
             this.tabControlExt1.Controls.Add(this.tabPage3);
@@ -55,6 +57,9 @@
             this.tabControlExt1.Controls.Add(this.tabPage9);
             this.tabControlExt1.Controls.Add(this.tabPage10);
             this.tabControlExt1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlExt1.HeadSelectedBackColor = System.Drawing.Color.SkyBlue;
+            this.tabControlExt1.HeadSelectedBorderColor = System.Drawing.Color.LightBlue;
+            this.tabControlExt1.HeadSelectedFontColor = System.Drawing.Color.AliceBlue;
             this.tabControlExt1.IsShowCloseBtn = true;
             this.tabControlExt1.ItemSize = new System.Drawing.Size(142, 50);
             this.tabControlExt1.Location = new System.Drawing.Point(0, 0);
@@ -74,7 +79,7 @@
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Size = new System.Drawing.Size(565, 313);
             this.tabPage1.TabIndex = 16;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "常规医嘱";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
@@ -119,10 +124,10 @@
             // 
             // tabPage6
             // 
-            this.tabPage6.Location = new System.Drawing.Point(4, 104);
+            this.tabPage6.Location = new System.Drawing.Point(4, 54);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(565, 313);
+            this.tabPage6.Size = new System.Drawing.Size(565, 363);
             this.tabPage6.TabIndex = 15;
             this.tabPage6.Text = "tabPage6";
             this.tabPage6.UseVisualStyleBackColor = true;

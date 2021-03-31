@@ -57,16 +57,16 @@
             this.tabControlExt1.Controls.Add(this.tabPage9);
             this.tabControlExt1.Controls.Add(this.tabPage10);
             this.tabControlExt1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlExt1.HeadSelectedBackColor = System.Drawing.Color.SkyBlue;
+            this.tabControlExt1.HeadSelectedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(243)))), ((int)(((byte)(254)))));
             this.tabControlExt1.HeadSelectedBorderColor = System.Drawing.Color.LightBlue;
-            this.tabControlExt1.HeadSelectedFontColor = System.Drawing.Color.AliceBlue;
+            this.tabControlExt1.HeadSelectedFontColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(83)))), ((int)(((byte)(170)))));
             this.tabControlExt1.IsShowCloseBtn = true;
             this.tabControlExt1.ItemSize = new System.Drawing.Size(142, 50);
             this.tabControlExt1.Location = new System.Drawing.Point(0, 0);
             this.tabControlExt1.Multiline = true;
             this.tabControlExt1.Name = "tabControlExt1";
             this.tabControlExt1.SelectedIndex = 0;
-            this.tabControlExt1.Size = new System.Drawing.Size(573, 421);
+            this.tabControlExt1.Size = new System.Drawing.Size(263, 421);
             this.tabControlExt1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.tabControlExt1.TabIndex = 1;
             this.tabControlExt1.UncloseTabIndexs = new int[] {
@@ -75,49 +75,49 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 104);
+            this.tabPage1.Location = new System.Drawing.Point(4, 204);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(565, 313);
+            this.tabPage1.Size = new System.Drawing.Size(255, 213);
             this.tabPage1.TabIndex = 16;
             this.tabPage1.Text = "常规医嘱";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 104);
+            this.tabPage2.Location = new System.Drawing.Point(4, 204);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(565, 313);
+            this.tabPage2.Size = new System.Drawing.Size(255, 213);
             this.tabPage2.TabIndex = 11;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPage3
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 104);
+            this.tabPage3.Location = new System.Drawing.Point(4, 204);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(565, 313);
+            this.tabPage3.Size = new System.Drawing.Size(255, 213);
             this.tabPage3.TabIndex = 12;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // tabPage4
             // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 104);
+            this.tabPage4.Location = new System.Drawing.Point(4, 54);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(565, 313);
+            this.tabPage4.Size = new System.Drawing.Size(565, 363);
             this.tabPage4.TabIndex = 13;
             this.tabPage4.Text = "tabPage4";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // tabPage5
             // 
-            this.tabPage5.Location = new System.Drawing.Point(4, 104);
+            this.tabPage5.Location = new System.Drawing.Point(4, 54);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(565, 313);
+            this.tabPage5.Size = new System.Drawing.Size(565, 363);
             this.tabPage5.TabIndex = 14;
             this.tabPage5.Text = "tabPage5";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -154,20 +154,20 @@
             // 
             // tabPage9
             // 
-            this.tabPage9.Location = new System.Drawing.Point(4, 104);
+            this.tabPage9.Location = new System.Drawing.Point(4, 204);
             this.tabPage9.Name = "tabPage9";
             this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(565, 313);
+            this.tabPage9.Size = new System.Drawing.Size(255, 213);
             this.tabPage9.TabIndex = 8;
             this.tabPage9.Text = "tabPage9";
             this.tabPage9.UseVisualStyleBackColor = true;
             // 
             // tabPage10
             // 
-            this.tabPage10.Location = new System.Drawing.Point(4, 104);
+            this.tabPage10.Location = new System.Drawing.Point(4, 204);
             this.tabPage10.Name = "tabPage10";
             this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage10.Size = new System.Drawing.Size(565, 313);
+            this.tabPage10.Size = new System.Drawing.Size(255, 213);
             this.tabPage10.TabIndex = 9;
             this.tabPage10.Text = "tabPage10";
             this.tabPage10.UseVisualStyleBackColor = true;
@@ -178,7 +178,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.tabControlExt1);
             this.Name = "UCTestTab";
-            this.Size = new System.Drawing.Size(573, 421);
+            this.Size = new System.Drawing.Size(263, 421);
             this.tabControlExt1.ResumeLayout(false);
             this.ResumeLayout(false);
 

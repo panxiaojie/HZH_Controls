@@ -119,12 +119,11 @@ namespace HZH_Controls.Controls
         /// <summary>
         /// The head selected back color
         /// </summary>
-        private Color _headSelectedBackColor = Color.SkyBlue;
+        private Color _headSelectedBackColor = Color.FromArgb(234,243,254);
         /// <summary>
         /// Gets or sets the color of the head selected back.
         /// </summary>
         /// <value>The color of the head selected back.</value>
-        [DefaultValue(typeof(Color), "255, 85, 51")]
         [Description("TabPage头部选中后的背景颜色")]
         public Color HeadSelectedBackColor
         {
@@ -134,12 +133,11 @@ namespace HZH_Controls.Controls
         /// <summary>
         /// The head selected back color
         /// </summary>
-        private Color _headSelectedFontColor = Color.AliceBlue;
+        private Color _headSelectedFontColor = Color.FromArgb(34,83,170);
         /// <summary>
         /// Gets or sets the color of the head selected back.
         /// </summary>
         /// <value>The color of the head selected back.</value>
-        [DefaultValue(typeof(Color), "255, 85, 51")]
         [Description("TabPage头部选中后的字体颜色")]
         public Color HeadSelectedFontColor
         {
@@ -319,6 +317,7 @@ namespace HZH_Controls.Controls
                     // rect.Inflate(1, 1);
                     //graph.FillRectangle(brush, rect);
                     graph.FillPath(brush, path);
+                    graph.SmoothingMode = SmoothingMode.AntiAlias;//抗锯齿
                 }
             }
             else
@@ -389,7 +388,7 @@ namespace HZH_Controls.Controls
             }
             else
             {
-                forebrush = SystemBrushes.ControlText;
+                forebrush = new SolidBrush(color:Color.FromArgb(102,102,102));
             }
 
             Font tabFont = this.Font;
@@ -465,16 +464,16 @@ namespace HZH_Controls.Controls
 
                     break;
             }
-            Point P_LeftTop = new Point(rect.Left + 15, rect.Top);
-            Point P_LeftBottom = new Point(rect.Left + 2, rect.Bottom);
-            Point P_RightTop = new Point(rect.Right - 15, rect.Top);
-            Point P_RightBottom = new Point(rect.Right - 2, rect.Bottom);
+            Point P_LeftTop = new Point(rect.Left + 6, rect.Top);
+            Point P_LeftBottom = new Point(rect.Left , rect.Bottom);
+            Point P_RightTop = new Point(rect.Right - 6, rect.Top);
+            Point P_RightBottom = new Point(rect.Right , rect.Bottom);
 
-            Point P_Control1 = new Point(rect.Left+5, rect.Top-5);
-            Point P_Control2 = new Point(rect.Left + 5, rect.Bottom - rect.Height / 5 * 3);
+            Point P_Control1 = new Point(rect.Left + 4, rect.Top);
+            Point P_Control2 = new Point(rect.Left + 2 , rect.Bottom - rect.Height / 2);
 
-            Point P_Control3 = new Point(rect.Right-5, rect.Top-5);
-            Point P_Control4 = new Point(rect.Right-5, rect.Bottom - rect.Height / 5 * 3);
+            Point P_Control3 = new Point(rect.Right - 4, rect.Top);
+            Point P_Control4 = new Point(rect.Right - 2, rect.Bottom - rect.Height / 2);
             //path.AddLine(rect.Left + 15, rect.Top, rect.Left + 2, rect.Bottom + 1);
             //path.AddLine(rect.Left + 15, rect.Top, rect.Right - 15, rect.Top);
             //path.AddLine(rect.Right - 15, rect.Top, rect.Right - 2, rect.Bottom + 1);
@@ -482,8 +481,8 @@ namespace HZH_Controls.Controls
             path.AddBezier(P_LeftTop, P_Control1, P_Control2, P_LeftBottom);
             path.AddLine(P_LeftBottom, P_RightBottom);
             path.AddBezier(P_RightBottom, P_Control4, P_Control3, P_RightTop);
+            //path.AddBezier(P_RightTop, P_Control3, P_Control4, P_RightBottom);
             path.AddLine(P_RightTop,P_LeftTop);
-
 
 
 
@@ -492,7 +491,7 @@ namespace HZH_Controls.Controls
 
             //path.AddArc(new Rectangle(new Point(rect.Left + 5, rect.Top), new Size(diameter, diameter)), 180, 60);
             //path.AddArc(new Rectangle(new Point(rect.Right - 15 - diameter, rect.Top - diameter), new Size(diameter, diameter)), 0, 60);
-            //path.CloseFigure();
+            path.CloseFigure();
             //return GetRoundedRectPath(rect, 15);
             return path;
         }
@@ -610,6 +609,10 @@ namespace HZH_Controls.Controls
             return -1;
         }
 
+        public override Rectangle DisplayRectangle => new Rectangle( base.DisplayRectangle.Location,new Size(base.DisplayRectangle.Width*2, base.DisplayRectangle.Height * 2));
+
+
+
         #region NewMethod
         GraphicsPath GetRoundedRectPath(Rectangle rect, int radius)
         {
@@ -640,5 +643,17 @@ namespace HZH_Controls.Controls
             return path;
         }
         #endregion
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // TabControlExt
+            // 
+            this.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Size = new System.Drawing.Size(250, 40);
+            this.ResumeLayout(false);
+
+        }
     }
 }

@@ -873,6 +873,9 @@
     <EmbeddedResource Include="Controls\Switch\UCSwitch.resx">
       <DependentUpon>UCSwitch.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Tab\TabControlExt.resx">
+      <DependentUpon>TabControlExt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\Text\TextBoxTransparent.resx">
       <DependentUpon>TextBoxTransparent.cs</DependentUpon>
     </EmbeddedResource>

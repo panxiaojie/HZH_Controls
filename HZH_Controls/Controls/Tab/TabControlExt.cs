@@ -652,6 +652,7 @@ namespace HZH_Controls.Controls
             // 
             this.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Size = new System.Drawing.Size(250, 40);
+            this.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.ResumeLayout(false);
 
         }

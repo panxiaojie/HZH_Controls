@@ -28,7 +28,7 @@ namespace HZH_Controls.Controls
     /// Implements the <see cref="System.Windows.Forms.Panel" />
     /// </summary>
     /// <seealso cref="System.Windows.Forms.Panel" />
-    public class UCPanelQuote : Panel
+    public class UCPanelQuote : System.Windows.Forms.Panel
     {
         /// <summary>
         /// The border color

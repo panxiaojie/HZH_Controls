@@ -173,7 +173,7 @@ namespace HZH_Controls.Controls
         /// <summary>
         /// The m pan children
         /// </summary>
-        private Panel m_panChildren = null;
+        private System.Windows.Forms.Panel m_panChildren = null;
 
         /// <summary>
         /// Reloads the items.
@@ -205,7 +205,7 @@ namespace HZH_Controls.Controls
                         m_lstParentItems.Add(c);
                     }
                 }
-                m_panChildren = new Panel();
+                m_panChildren = new System.Windows.Forms.Panel();
                 if (m_menuStyle == HZH_Controls.Controls.MenuStyle.Fill)
                 {
                     m_panChildren.Dock = DockStyle.Fill;

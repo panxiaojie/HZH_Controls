@@ -39,6 +39,7 @@ namespace Test
                 this.tvMenu.Nodes.Add(tnForm);
 
                 TreeNode tnControl = new TreeNode("  控件");
+                tnControl.Nodes.Add("Panel卡片");
                 tnControl.Nodes.Add("表单控件");
                 tnControl.Nodes.Add("按钮");
                 tnControl.Nodes.Add("选项卡");
@@ -203,6 +204,9 @@ namespace Test
                 #endregion
 
                 #region 控件    English:control
+                case "Panel卡片":
+                    AddControl(new UC.UCTestPanelCard());
+                    break;
                 case "表单控件":
                     AddControl(new UC.UCTestForms());
                     break;

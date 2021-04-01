@@ -53,16 +53,16 @@ namespace HZH_Controls.Controls
             // 
             // lblTitle
             // 
-            this.lblTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(59)))));
+            this.lblTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(243)))), ((int)(((byte)(254)))));
             this.lblTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblTitle.Location = new System.Drawing.Point(1, 1);
+            this.lblTitle.Font = new System.Drawing.Font("微软雅黑", 15F);
+            this.lblTitle.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.lblTitle.Location = new System.Drawing.Point(2, 2);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(392, 34);
+            this.lblTitle.Size = new System.Drawing.Size(773, 52);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "面板";
-            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTitle.Text = "  患者信息";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblTitle_MouseDown);
             // 
             // UCPanelTitle
@@ -75,9 +75,9 @@ namespace HZH_Controls.Controls
             this.IsRadius = true;
             this.IsShowRect = true;
             this.Name = "UCPanelTitle";
-            this.Padding = new System.Windows.Forms.Padding(1);
-            this.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(59)))));
-            this.Size = new System.Drawing.Size(394, 199);
+            this.Padding = new System.Windows.Forms.Padding(2);
+            this.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.Size = new System.Drawing.Size(777, 604);
             this.SizeChanged += new System.EventHandler(this.UCPanelTitle_SizeChanged);
             this.ResumeLayout(false);
 

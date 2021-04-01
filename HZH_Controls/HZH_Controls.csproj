@@ -158,6 +158,9 @@
     <Compile Include="Controls\Navigation\CrumbNavigationClickEventArgs.cs" />
     <Compile Include="Controls\Navigation\CrumbNavigationItem.cs" />
     <Compile Include="Controls\Page\PageModel.cs" />
+    <Compile Include="Controls\Panel\CardPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\Panel\UCPanelQuote.cs">
       <SubType>Component</SubType>
     </Compile>

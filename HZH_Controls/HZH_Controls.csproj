@@ -68,6 +68,9 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\DataGridView\IDataGridViewCustomCell.cs" />
+    <Compile Include="Controls\DataGridView\MyDatGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\DateTime\UCCalendarNotes.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -723,6 +726,9 @@
     <EmbeddedResource Include="Controls\ComboBox\UCComboxGridPanel.resx">
       <DependentUpon>UCComboxGridPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DataGridView\MyDatGrid.resx">
+      <DependentUpon>MyDatGrid.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\DataGridView\UCDataGridView.resx">
       <DependentUpon>UCDataGridView.cs</DependentUpon>
     </EmbeddedResource>
@@ -842,6 +848,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Navigation\UCCrumbNavigation.resx">
       <DependentUpon>UCCrumbNavigation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Panel\CardPanel.resx">
+      <DependentUpon>CardPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Panel\UCPanelTitle.resx">
       <DependentUpon>UCPanelTitle.cs</DependentUpon>

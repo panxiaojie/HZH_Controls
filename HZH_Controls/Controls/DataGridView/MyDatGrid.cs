@@ -1,31 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Test.UC
+namespace HZH_Controls.Controls
 {
-    public partial class UCTestPanelCard : UserControl
+    public class MyDatGrid : System.Windows.Forms.DataGridView
     {
-        public UCTestPanelCard()
+        protected override void OnCellPainting(DataGridViewCellPaintingEventArgs e)
         {
-            InitializeComponent();
+            base.OnCellPainting(e);
         }
 
-        private void myDatGrid2_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        private void InitializeComponent()
         {
-            if (this.myDatGrid2.CurrentRow!=null&&e.RowIndex >= 0 && e.RowIndex==this.myDatGrid2.CurrentRow.Index)
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // MyDatGrid
+            // 
+            this.RowTemplate.Height = 30;
+            this.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.MyDatGrid_CellPainting);
+            this.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.MyDatGrid_EditingControlShowing);
+            ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        private void MyDatGrid_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (this.Columns["ContactName"].Index == e.ColumnIndex && e.RowIndex >= 0)
             {
-                Rectangle newRect = new Rectangle(e.CellBounds.X + 10,
+                Rectangle newRect = new Rectangle(e.CellBounds.X + 1,
                     e.CellBounds.Y + 1, e.CellBounds.Width - 4,
                     e.CellBounds.Height - 4);
 
                 using (
-                    Brush gridBrush = new SolidBrush(this.myDatGrid2.GridColor),
+                    Brush gridBrush = new SolidBrush(this.GridColor),
                     backColorBrush = new SolidBrush(e.CellStyle.BackColor))
                 {
                     using (Pen gridLinePen = new Pen(gridBrush))
@@ -56,6 +69,11 @@ namespace Test.UC
                     }
                 }
             }
+        }
+
+        private void MyDatGrid_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            var a = e.Control;
         }
     }
 }

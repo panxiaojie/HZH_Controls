@@ -250,6 +250,7 @@ namespace HZH_Controls.Controls
             this.PaintAllTheTabs(e);
             this.PaintTheTabPageBorder(e);
             this.PaintTheSelectedTab(e);
+            this.PaintTabMarginBorder(e);
         }
 
         /// <summary>
@@ -264,6 +265,7 @@ namespace HZH_Controls.Controls
                 {
                     this.PaintTab(e, index);
                 }
+
             }
         }
 
@@ -279,6 +281,7 @@ namespace HZH_Controls.Controls
             this.PaintTabBorder(e.Graphics, index, path);
             this.PaintTabText(e.Graphics, index);
             this.PaintTabImage(e.Graphics, index);
+            
             if (IsShowCloseBtn)
             {
                 if (UncloseTabIndexs != null)
@@ -400,14 +403,26 @@ namespace HZH_Controls.Controls
                 }
             }
 
-            Rectangle rect = this.GetTabRect(index);
+            RectangleF rect = this.GetTabPath(index).GetBounds();
 
-            var txtSize = ControlHelper.GetStringWidth(tabtext, graph, tabFont);
-            Rectangle rect2 = new Rectangle(rect.Left + (rect.Width - txtSize) / 2 - 1, rect.Top, rect.Width, rect.Height);
+            var txtSize = GetStringWidth(tabtext, graph, tabFont);
+            RectangleF rect2 = new RectangleF(rect.Left + (rect.Width - txtSize) / 2 - 1, rect.Top, rect.Width, rect.Height);
 
             graph.DrawString(tabtext, tabFont, forebrush, rect2, format);
         }
+        public static int GetStringWidth(string strSource,   System.Drawing.Graphics g,   System.Drawing.Font font)
+        {
+            string[] strs = strSource.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+            float fltWidth = 0;
+            foreach (var item in strs)
+            {
+                System.Drawing.SizeF sizeF = g.MeasureString(strSource.Replace(" ", "A"), font);
+                if (sizeF.Width > fltWidth)
+                    fltWidth = sizeF.Width;
+            }
 
+            return (int)fltWidth;
+        }
         /// <summary>
         /// 设置 TabPage 内容页边框色
         /// </summary>
@@ -464,15 +479,17 @@ namespace HZH_Controls.Controls
 
                     break;
             }
-            Point P_LeftTop = new Point(rect.Left + 6, rect.Top);
-            Point P_LeftBottom = new Point(rect.Left , rect.Bottom);
-            Point P_RightTop = new Point(rect.Right - 6, rect.Top);
-            Point P_RightBottom = new Point(rect.Right , rect.Bottom);
+            int PaddingTop = 10;
 
-            Point P_Control1 = new Point(rect.Left + 4, rect.Top);
+            Point P_LeftTop = new Point(rect.Left + 7, rect.Top+ PaddingTop);
+            Point P_LeftBottom = new Point(rect.Left+1 , rect.Bottom);
+            Point P_RightTop = new Point(rect.Right - 7, rect.Top+ PaddingTop);
+            Point P_RightBottom = new Point(rect.Right - 1, rect.Bottom);
+
+            Point P_Control1 = new Point(rect.Left + 3, rect.Top + PaddingTop);
             Point P_Control2 = new Point(rect.Left + 2 , rect.Bottom - rect.Height / 2);
 
-            Point P_Control3 = new Point(rect.Right - 4, rect.Top);
+            Point P_Control3 = new Point(rect.Right - 3, rect.Top + PaddingTop);
             Point P_Control4 = new Point(rect.Right - 2, rect.Bottom - rect.Height / 2);
             //path.AddLine(rect.Left + 15, rect.Top, rect.Left + 2, rect.Bottom + 1);
             //path.AddLine(rect.Left + 15, rect.Top, rect.Right - 15, rect.Top);
@@ -609,38 +626,29 @@ namespace HZH_Controls.Controls
             return -1;
         }
 
-        public override Rectangle DisplayRectangle => new Rectangle( base.DisplayRectangle.Location,new Size(base.DisplayRectangle.Width*2, base.DisplayRectangle.Height * 2));
-
-
 
         #region NewMethod
-        GraphicsPath GetRoundedRectPath(Rectangle rect, int radius)
+        /// <summary>
+        /// 绘画Tab的外边框
+        /// </summary>
+        public void PaintTabMarginBorder(PaintEventArgs e)
         {
-            int diameter = 2 * radius;
-            Rectangle arcRect = new Rectangle(rect.Location, new Size(diameter, diameter));
-            GraphicsPath path = new GraphicsPath();
-
-            // 左上角
-            path.AddArc(arcRect, 180, 90);
-
-            var a = new Rectangle(rect.Location, new Size(diameter, diameter));
-            // 右上角
-            arcRect.X = a.Right - 15 - diameter;
-            path.AddArc(arcRect, 270, 90);
-
-            //// 右下角
-            //arcRect.Y = rect.Bottom - diameter;
-            //path.AddArc(arcRect, 0, 90);
-
-            //// 左下角
-            //arcRect.X = rect.Left;
-            //path.AddArc(arcRect, 90, 90);
-
-            path.AddLine(arcRect.Right - 2, arcRect.Bottom, arcRect.Left + 2, arcRect.Bottom);
-
-            path.CloseFigure();
-
-            return path;
+            Rectangle rect = new Rectangle();
+            if ((this.Parent != null))
+            {
+                rect = this.Parent.ClientRectangle;
+            }
+            else
+            {
+                rect = this.ClientRectangle;
+            }
+            if (this.TabCount > 0)
+            {
+                var rect_Tab = this.GetTabPath(0).GetBounds();
+                //Rectangle rect = this.DisplayRectangle;
+                //e.Graphics.DrawLine(new Pen(color:Color.Black, 4F), new PointF(rect.Left, rect.Top), new PointF(rect.Right, rect.Top));
+                e.Graphics.DrawLine(new Pen(color: Color.Gray, 1F), new PointF(rect.Left, rect_Tab.Bottom), new PointF(rect.Right, rect_Tab.Bottom));
+            }
         }
         #endregion
 
